@@ -1,9 +1,9 @@
 FS: Native Listener (Mac Windows Linux)
 =======================================
 
-[![Actions Status](https://github.com/synrc/fs/workflows/mix/badge.svg)](https://github.com/synrc/fs/actions)
-[![Build Status](https://travis-ci.com/synrc/fs.svg?branch=master)](https://travis-ci.com/synrc/fs)
-[![Hex pm](http://img.shields.io/hexpm/v/fs.svg?style=flat)](https://hex.pm/packages/fs)
+[![Build Status][gh-actions-badge]][gh-actions]
+[![Erlang Versions][erlang-badge]][versions]
+[![Tag][github-tag-badge]][github-tag]
 
 Backends
 --------
@@ -51,3 +51,16 @@ Credits
 * Dominic Letz 
 
 OM A HUM
+
+
+[//]: ---Named-Links---
+
+[github]: https://github.com/erlsci/fs
+[gh-actions-badge]: https://github.com/erlsci/fs/workflows/ci%2Fcd/badge.svg
+[gh-actions]: https://github.com/erlsci/fs/actions
+[erlang badge]: https://img.shields.io/badge/erlang-19%E2%88%9226-blue.svg
+[versions]: https://github.com/erlsci/fs/blob/master/.github/workflows/cicd.yml
+[github-tag]: https://github.com/erlsci/fs/tags
+[github-tag-badge]: https://img.shields.io/github/tag/erlsci/fs.svg
+[hex-badge]: https://img.shields.io/hexpm/v/fs_erlsci.svg?maxAge=2592000
+[hex-package]: https://hex.pm/packages/fs_erlsci
