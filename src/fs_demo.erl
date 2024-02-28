@@ -11,7 +11,7 @@ start_looper() -> start_looper(?DEFAULT_NAME).
 
 start_looper(Name) ->
     spawn(fun () ->
-                  subscribe(Name),
+                  fs:subscribe(Name),
                   loop()
           end).
 

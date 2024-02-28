@@ -28,8 +28,13 @@ start_link(Name, EventHandler, Backend, Path, Cwd) ->
 init([EventHandler, Backend, Path, Cwd]) ->
     {ok,
      #state{event_handler = EventHandler,
-            port = Backend:start_port(Path, Cwd), path = Path,
-            backend = Backend,cwd=Cwd,crashes=0}}.
+            port = Backend:start_port(Path, Cwd),
+            path = Path,
+            backend = Backend,
+            cwd=Cwd,
+            crashes=0
+     }
+    }.
 
 handle_call(known_events, _From,
             #state{backend = Backend} = State) ->

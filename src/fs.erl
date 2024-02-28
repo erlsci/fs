@@ -1,17 +1,13 @@
 -module(fs).
 
 -include_lib("kernel/include/file.hrl").
+-include_lib("fs/include/const.hrl").
 
--export([start_link/1,
-         start_link/2,
-         subscribe/0,
-         subscribe/1,
-         known_events/0,
-         known_events/1,
-         start_looper/0,
-         start_looper/1,
+-export([start_link/1, start_link/2,
+         subscribe/0, subscribe/1, subscribe/2,
+         known_events/0, known_events/1,
          find_executable/2,
-         path/0]).
+         path/0, path/1]).
 
 % sample subscriber
 
@@ -22,40 +18,29 @@ start_link(Name, Path) ->
     FileHandler = name(Name, "file"),
     fs_sup:start_link(SupName, Name, FileHandler, Path).
 
-subscribe() -> subscribe(default_fs).
+subscribe() -> subscribe(?DEFAULT_NAME).
 
-subscribe(Name) ->
+subscribe(Name) -> subscribe(Name, self()).
+
+subscribe(Name, Pid) ->
     gen_event:add_sup_handler(Name,
-                              {fs_event_bridge, self()},
-                              [self()]).
+                              {fs_event_bridge, Pid},
+                              [Pid]).
 
 path() ->
-    case application:get_env(fs, path) of
+    path(application:get_env(fs, path)).
+
+path(Path) ->
+    case Path of
+        undefined -> filename:absname("");
         {ok, P} -> filename:absname(P);
-        undefined -> filename:absname("")
+        P -> filename:absname(P)
     end.
 
-known_events() -> known_events(default_fs).
+known_events() -> known_events(?DEFAULT_NAME).
 
 known_events(Name) ->
     gen_server:call(name(Name, "file"), known_events).
-
-start_looper() -> start_looper(default_fs).
-
-start_looper(Name) ->
-    spawn(fun () ->
-                  subscribe(Name),
-                  loop()
-          end).
-
-loop() ->
-    receive
-        {_Pid, {fs, file_event}, {Path, Flags}} ->
-            error_logger:info_msg("file_event: ~p ~p",
-                                  [Path, Flags]);
-        _ -> ignore
-    end,
-    loop().
 
 find_executable(Cmd, DepsPath) ->
     Executable = 
