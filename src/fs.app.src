@@ -8,6 +8,7 @@
 
   %% Package metadata
   {pkg_name, fs_erlsci},
-  {licenses, ["ISC"]},
-  {links,[{"Github","https://github.com/erlsci/fs"}]}
+  {licenses, ["MIT"]},
+  {links,[{"Github","https://github.com/erlsci/fs"}]},
+  {exclude_files, ["priv/site/*", "priv/man/*"]}
   ]}.
