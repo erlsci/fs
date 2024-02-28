@@ -1,11 +1,13 @@
 {application, fs,
- [{description, "FS Native Listener (Mac Windows Linux)"},
-  {vsn, "8.6.1"},
+ [{description, "A fork of 'fs': A native file system listener fo macos, win, & linux"},
+  {vsn, "9.0.0"},
   {registered, []},
   {applications, [kernel,stdlib]},
   {mod, { fs_app, []}},
   {env, [ {backwards_compatible, true} ]},
-  {maintainers,["Maxim Sokhatsky", "Vladimir Kirillov"]},
+
+  %% Package metadata
+  {pkg_name, fs_erlsci},
   {licenses, ["ISC"]},
-  {links,[{"Github","https://github.com/synrc/fs"}]}
+  {links,[{"Github","https://github.com/erlsci/fs"}]}
   ]}.

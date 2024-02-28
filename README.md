@@ -1,18 +1,20 @@
-FS: Native Listener (Mac Windows Linux)
-=======================================
+# fs
 
 [![Build Status][gh-actions-badge]][gh-actions]
 [![Erlang Versions][erlang-badge]][versions]
 [![Tag][github-tag-badge]][github-tag]
 
-Backends
---------
+*A fork of 'fs': A native file system listener fo macos, win, & linux*
+
+## Backends
 
 * Mac [fsevent](https://github.com/thibaudgg/rb-fsevent)
 * Linux [inotify](https://github.com/rvoicilas/inotify-tools/wiki)
 * Windows [inotify-win](https://github.com/thekid/inotify-win)
 
 NOTE: On Linux you need to install inotify-tools.
+
+## Usage
 
 ### Subscribe to Notifications
 
@@ -43,8 +45,7 @@ Shell got {<0.47.0>,
 file_event: "/tank/proger/erlfsmon/src/4913" [closed,modified]
 ```
 
-Credits
--------
+## Credits
 
 * Vladimir Kirillov
 * Maxim Sokhatsky
