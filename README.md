@@ -9,6 +9,7 @@
 Updates for this fork:
 
 * Fix for relative path
+* Allow one process to subscribe another process (`pid` as an arg to the new `fs:subscribe/2` function)
 * Switch to logger (Erlang 21+)
 * Fixed CI/CD job so tests run again (and added Erlang releases to the test matrix)
 * Moved demo code into its own module (and other minor cleanups).
