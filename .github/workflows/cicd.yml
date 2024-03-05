@@ -10,13 +10,14 @@ on:
 jobs:
 
   builds:
-    name: Old builds on OTP ${{ matrix.otp_version }} / ${{ matrix.os }}
-    runs-on: ubuntu-20.04
+    name: New builds on OTP ${{ matrix.otp_version }} / ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        otp_version: [20, 21]
-        os: ['ubuntu-20.04']
+        otp_version: [22, 23, 24, 25, 26]
+        rebar3-version: ['3.22.0']
+        os: [ubuntu-latest]
 
     container:
       image: erlang:${{ matrix.otp_version }}
@@ -36,15 +37,14 @@ jobs:
     - name: Check Coverage
       run: rebar3 as test cover -v --min_coverage=0
 
-  new-builds:
-    name: New builds on OTP ${{ matrix.otp_version }} / ${{ matrix.os }}
-    runs-on: ubuntu-latest
+  old-builds:
+    name: Old builds on OTP ${{ matrix.otp_version }} / ${{ matrix.os }}
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
-        otp_version: [22, 23, 24, 25, 26]
-        rebar3-version: ['3.22.0']
-        os: [ubuntu-latest]
+        otp_version: [21]
+        os: ['ubuntu-20.04']
 
     container:
       image: erlang:${{ matrix.otp_version }}

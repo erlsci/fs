@@ -59,7 +59,7 @@ OM A HUM
 [github]: https://github.com/erlsci/fs
 [gh-actions-badge]: https://github.com/erlsci/fs/workflows/ci%2Fcd/badge.svg
 [gh-actions]: https://github.com/erlsci/fs/actions
-[erlang-badge]: https://img.shields.io/badge/erlang-20%E2%88%9226-blue.svg
+[erlang-badge]: https://img.shields.io/badge/erlang-21%E2%88%9226-blue.svg
 [versions]: https://github.com/erlsci/fs/blob/master/.github/workflows/cicd.yml
 [github-tag]: https://github.com/erlsci/fs/tags
 [github-tag-badge]: https://img.shields.io/github/tag/erlsci/fs.svg
