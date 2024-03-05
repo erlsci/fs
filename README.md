@@ -45,6 +45,16 @@ Shell got {<0.47.0>,
 file_event: "/tank/proger/erlfsmon/src/4913" [closed,modified]
 ```
 
+### Receive in `gen_server`
+
+If you configure `fs` to send to a `gen_server`'s PID, you can handle `fs` events with `gen_server:handle_info/2`, where the first argument is the `fs` message payload and the second is the `gen_server`'s state. The format of the message payload is as follows:
+
+``` erlang
+{SenderPid, {fs, file_event}, {FileName, EventTypes}}
+```
+
+and where `EventTypes` is a list one or more event types that were part of the event.
+
 ## Credits
 
 * Vladimir Kirillov
