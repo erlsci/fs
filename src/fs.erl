@@ -16,7 +16,8 @@ start_link(Name) -> start_link(Name, path()).
 start_link(Name, Path) ->
     SupName = name(Name, "sup"),
     FileHandler = name(Name, "file"),
-    fs_sup:start_link(SupName, Name, FileHandler, Path).
+    AbsPath = filename:absname(Path),
+    fs_sup:start_link(SupName, Name, FileHandler, AbsPath).
 
 subscribe() -> subscribe(?DEFAULT_NAME).
 
@@ -24,7 +25,7 @@ subscribe(Name) -> subscribe(Name, self()).
 
 subscribe(Name, Pid) ->
     gen_event:add_sup_handler(Name,
-                              {fs_event_bridge, Pid},
+                              {fs_event_bridge, Name},
                               [Pid]).
 
 path() ->
