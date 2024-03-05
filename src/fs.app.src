@@ -1,6 +1,6 @@
 {application, fs,
  [{description, "A fork of 'fs': A native file system listener fo macos, win, & linux"},
-  {vsn, "8.7.0"},
+  {vsn, "8.7.1"},
   {registered, []},
   {applications, [kernel,stdlib]},
   {mod, { fs_app, []}},
