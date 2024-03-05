@@ -6,6 +6,13 @@
 
 *A fork of 'fs': A native file system listener fo macos, win, & linux*
 
+Updates for this fork:
+
+* Fix for relative path
+* Switch to logger (Erlang 21+)
+* Fixed CI/CD job so tests run again (and added Erlang releases to the test matrix)
+* Moved demo code into its own module (and other minor cleanups).
+
 ## Backends
 
 * Mac [fsevent](https://github.com/thibaudgg/rb-fsevent)
