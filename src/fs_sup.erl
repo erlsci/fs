@@ -46,10 +46,8 @@ has_executable(Backend) ->
     end.
 
 os_not_supported() ->
-    error_logger:warning_msg("fs does not support the current operating "
-                             "system: auto-reloading might not work~n",
-                             []).
+    logger:warning("fs does not support the current operating "
+                   "system: auto-reloading might not work~n").
 
 backend_port_not_found(Backend) ->
-    error_logger:error_msg("backend port not found: ~p~n",
-                           [Backend]).
+    logger:error("backend port not found: ~p~n", [Backend]).

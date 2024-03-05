@@ -12,6 +12,7 @@
 init([Pid]) -> {ok, Pid}.
 
 handle_event(Event, Pid) ->
+    %%logger:debug("Sending event ~p to ~p", [Event, Pid]),
     Pid ! Event,
     {ok, Pid}.
 

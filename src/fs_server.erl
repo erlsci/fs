@@ -49,15 +49,16 @@ handle_info({_Port, {data, {eol, Line}}},
                    backend = Backend} =
                 State) ->
     Event = Backend:line_to_event(Line),
+    %%logger:debug("Got event: ~p", [Line]),
     notify(EventHandler, file_event, Event),
     {noreply, State};
 handle_info({_Port, {data, {noeol, Line}}}, State) ->
-    error_logger:error_msg("~p line too long: ~p, ignoring~n",
+    logger:error("~p line too long: ~p, ignoring~n",
                            [?SERVER, Line]),
     {noreply, State};
 
 handle_info({_Port, {exit_status, Status}}, #state{path=Path,backend=Backend,cwd=Cwd,crashes=Crashes} = State) ->
-    error_logger:error_msg("~p port_exit ~p, retry ~p~n", [?SERVER, Status, Crashes]),
+    logger:error("~p port_exit ~p, retry ~p~n", [?SERVER, Status, Crashes]),
     timer:sleep(100*(Crashes+1)*(Crashes+1)),
     {noreply, State#state{port=Backend:start_port(Path, Cwd),crashes=Crashes+1}};
 

@@ -18,8 +18,7 @@ start_looper(Name) ->
 loop() ->
     receive
         {_Pid, {fs, file_event}, {Path, Flags}} ->
-            error_logger:info_msg("file_event: ~p ~p",
-                                  [Path, Flags]);
+            logger:debug("file_event: ~p ~p", [Path, Flags]);
         _ -> ignore
     end,
     loop().
